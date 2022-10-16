@@ -15,7 +15,7 @@ export function SignIn() {
   async function handleSignIn(event: FormEvent) {
     event.preventDefault();
 
-    await axios.post("/sessions", {
+    await axios.post("https://my-api.com/session", {
       email: "alex@exemplo.com.br",
       password: "12345678",
     });

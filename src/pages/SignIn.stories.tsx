@@ -3,6 +3,20 @@ import { within, userEvent, waitFor } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 import { rest } from "msw";
 import { SignIn } from "./SignIn";
+import { setupServer } from "msw/node";
+
+// beforeAll(() => {
+//   // Establish requests interception layer before all tests.
+//   server.listen();
+// });
+// afterAll(() => {
+//   // Clean up after all tests are done, preventing this
+//   // interception layer from affecting irrelevant tests.
+//   server.close();
+// });
+// test("renders a book data", () => {
+//   // Render components, perform requests, API communication is covered.
+// });
 
 export default {
   title: "Pages/Sign in",
@@ -12,7 +26,7 @@ export default {
   parameters: {
     msw: {
       handlers: [
-        rest.post("/sessions", (req, res, ctx) => {
+        rest.post("https://my-api.com/session", (req, res, ctx) => {
           return res(
             ctx.json({
               message: "Login realizado!",
